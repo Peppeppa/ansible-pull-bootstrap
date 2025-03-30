@@ -25,7 +25,7 @@
   become: true
   when: ansible_os_family != "Suse"
 
-- name: Update and upgrade package packages
+- name: Update and upgrade package packages suse
   tags: update
   ansible.builtin.zypper:
     name: "*"
