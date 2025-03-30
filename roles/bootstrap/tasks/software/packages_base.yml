@@ -94,7 +94,7 @@
       #- "{{ 7ZIP_PACKAGE }}"
       - bat
       - zip
-      - "{{ PYTHON_FLAKE_PACKAGE }}"
+      #- "{{ PYTHON_FLAKE_PACKAGE }}"
       - "{{ PYTHONPACKAGE }}"
       - "{{ PYTHON_PIP_PACKAGE }}"
       - "{{ PYTHON_PYFLAKES_PACKAGE }}"
