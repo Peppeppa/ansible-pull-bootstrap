@@ -1,7 +1,7 @@
 !#/bin/bash
 
 VAULT_PASS_FILE="$HOME/.ansible/vault_pass"
-ANSIBLE_PULL_CMD="ansible-pull -U git@github.com:Peppeppa/ansible-pull-bootstrap.git -u medvidec -K --vault-password-file $HOME/.ansible/vault_pass"
+ANSIBLE_PULL_CMD="ansible-pull -U https://github.com/Peppeppa/ansible-pull-bootstrap.git -u medvidec -K --vault-password-file $HOME/.ansible/vault_pass"
 
 #create vault pw file
 function set_vault_password {
