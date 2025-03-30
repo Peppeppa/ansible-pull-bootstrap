@@ -11,10 +11,10 @@
 #-----------------------------------------------------
 #   variablen
 #
-- name: task_name | load variables 
-  tags: tag1,tag2
-  set_fact:
-    MAIN_USER: "{{ ansible_user }}"
+#- name: task_name | load variables 
+#  tags: tag1,tag2
+#  set_fact:
+#    MAIN_USER: "{{ ansible_user }}"
 #    SUDO_GROUP: 
 #    MAIN_USER_PASSWD: "{{ beispiel_variable }}"
 #    var_4: 
@@ -44,10 +44,10 @@
     state: present
   become: true
 
-- name: users | main_user | get username
-  tags: users,main_user,bootstrap
-  ansible.builtin.set_fact:
-    MAIN_USER: "{{ ansible_env.USER }}"
+#- name: users | main_user | get username
+  #  tags: users,main_user,bootstrap
+  #  ansible.builtin.set_fact:
+  #  MAIN_USER: "{{ ansible_env.USER }}"
 
 #-----------------------------------------------------
 #   Main
