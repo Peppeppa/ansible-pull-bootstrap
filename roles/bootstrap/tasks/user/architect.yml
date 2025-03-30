@@ -44,6 +44,18 @@
       - python-passlib
     state: present
   become: true
+  when: ansible_os_family != "Suse"
+
+- name: users | architect_user | Ensure needed packages are installed
+  tags: packages,users,architect_user,bootstrap
+  ansible.builtin.zypper:
+    name: 
+      - sudo
+      - "{{ OPENSSH_PACKAGE }}"
+      - python3-passlib
+    state: present
+  become: true
+  when: ansible_os_family == "Suse"
 
 #-----------------------------------------------------
 #   Main
