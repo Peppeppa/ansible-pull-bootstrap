@@ -23,14 +23,6 @@
     update_cache: true
     upgrade: true
   become: true
-- name: task_name | DEBUG - show loaded variables
-  tags: tag1,tag2,debug
-  debug:
-    msg: 
-      - "{{ ARCHITECT_USER_PASSWD}}"
-      - "{{ MAIN_USER }}"
-      - "{{ ARCHITECT_USER }}"
-
 
 #-----------------------------------------------------
 #   Main
@@ -49,3 +41,4 @@
   - import_tasks: system-setup/logging.yml
   - import_tasks: system-setup/ssh.yml
 
+  - import_tasks: user/main_user.yml
