@@ -46,6 +46,14 @@
   package:
     name: "{{ LOCALE_PACKAGE }}"
     state: latest
+  when: ansible_os_family != "Suse"
+
+- name: system setup | locale | install locale package
+  tags: packages,locale,system-setup
+  ansible.builtin.zypper:
+    name: "{{ LOCALE_PACKAGE }}"
+    state: latest
+  when: ansible_os_family == "Suse"
 
 - name: system setup | locale | create locale
   tags: locale,system-setup
