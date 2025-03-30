@@ -57,6 +57,16 @@
     mode: 0644
   notify: restart_ssh
 
+- name: system setup | ssh | write pub ssh to authorized keys
+  ansible.builtin.authorized_key:
+    user: "{{ MAIN_USER }}"
+    state: present
+    key: "{{ item }}"
+    path: "/home/{{ MAIN_USER }}/.ssh/authorized_keys"
+  loop:
+    - "{{ PUBSSH_T440P }}"
+    - "{{ PUBSSH_X1CARB }}"
+
 
 #-----------------------------------------------------
 #   post_tasks
