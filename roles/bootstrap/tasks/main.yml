@@ -49,6 +49,7 @@
   - import_tasks: system-setup/clock.yml
   - import_tasks: system-setup/cron.yml
   - import_tasks: system-setup/locale.yml
+    when: ansible_os_family != "Suse"
   - import_tasks: system-setup/logging.yml
   - import_tasks: system-setup/ssh.yml
 
