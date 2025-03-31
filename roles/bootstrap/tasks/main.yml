@@ -51,6 +51,7 @@
   - import_tasks: system-setup/locale.yml
     when: ansible_os_family != "Suse"
   - import_tasks: system-setup/logging.yml
+    when: ansible_os_family != "Suse"
   - import_tasks: system-setup/ssh.yml
 
   #- import_tasks: user/main_user.yml
