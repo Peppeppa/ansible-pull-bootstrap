@@ -2,3 +2,6 @@
 - block:
   # software
   - import_tasks: dotfiles/dotfiles_main.yml
+  - import_tasks: software/zsh.yml
+  - import_tasks: software/user_software.yml
+

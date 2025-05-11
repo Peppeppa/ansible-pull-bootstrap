@@ -1,0 +1,87 @@
+---
+######################################################
+#
+#     NAME
+#
+######################################################
+# README:
+#
+#
+
+#-----------------------------------------------------
+#   Header & variablen
+#
+#- name: task_name | load variables 
+#  tags: tag1,tag2
+#  set_fact:
+#    var_1: 
+#    var_2: 
+#    var_3: "{{ beispiel_variable }}"
+#    var_4: 
+
+#-----------------------------------------------------
+#   DEBUG
+#
+#- name: task_name | DEBUG - show loaded variables
+#  tags: tag1,tag2,debug
+#  debug:
+#    msg: 
+#      - "{{ var_1 }}"
+#      - "{{ var_2 }}"
+#      - "{{ var_3 }}"
+#      - "{{ var_4 }}"
+
+
+#-----------------------------------------------------
+#   pre_tasks
+#
+- name: users | main_user | Update and upgrade package packages
+  tags: update
+  package:
+    update_cache: true
+    upgrade: true
+  become: true
+  when: ansible_os_family != "Suse"
+
+- name: Update and upgrade package packages suse
+  tags: update
+  ansible.builtin.zypper:
+    name: "*"
+    state: latest
+    update_cache: true
+  become: true
+  when: ansible_os_family == "Suse"
+
+
+#-----------------------------------------------------
+#   Main
+#
+- name: system setup | utilities | install utility packages
+  tags: software,packages,system,update
+  package:
+    state: latest
+    name:
+      - eza
+      - starship
+      - ghostty
+      -  
+  register: package_install
+  when: ansible_os_family != "Suse"
+
+
+#-----------------------------------------------------
+#   post_tasks
+#
+
+
+#-----------------------------------------------------
+#   Handlers
+#
+
+
+#-----------------------------------------------------
+#   roles
+#
+
+
+ 
