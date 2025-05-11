@@ -64,7 +64,6 @@
       - eza
       - starship
       - ghostty
-      -  
   register: package_install
   when: ansible_os_family != "Suse"
 
