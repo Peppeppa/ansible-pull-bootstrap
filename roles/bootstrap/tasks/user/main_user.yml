@@ -65,6 +65,7 @@
 - name: users | main_user | ssh-key
   tags: users,main_user,bootstrap
   user:
+    name: "{{ MAIN_USER }}"
     generate_ssh_key: true
     ssh_key_type: ed25519
     ssh_key_comment: "{{ MAIN_USER }}"
