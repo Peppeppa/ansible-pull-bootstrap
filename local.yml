@@ -9,4 +9,3 @@
     - /group_vars/vault.yml
   roles:
     - bootstrap
-    - workstation-basics
