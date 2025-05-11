@@ -58,7 +58,7 @@
     - .tmux
     - .zsh
     - git/dotfiles-stow
-    - .bashprofile
+    - .bash_profile
 
 #-----------------------------------------------------
 #   Main
