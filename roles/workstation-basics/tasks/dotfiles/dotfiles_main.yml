@@ -97,7 +97,7 @@
 
 - name: dotfiles | USER_main | Symlinks für Dotfiles erstellen
   tags: dotfiles_main
-  command: "stow -d {{ USER_DIR }}/git/dotfiles-stow/ -t {{ USER_DIR }}/ bashrc alacritty neofetch nvim tmux zsh"
+  command: "stow -d {{ USER_DIR }}/git/dotfiles-stow/ -t {{ USER_DIR }}/ fonts neofetch nvim shell_config yazi ghostty homepage ranger tmux"
   args:
     chdir: "{{ USER_DIR }}/git/dotfiles-stow"
 
