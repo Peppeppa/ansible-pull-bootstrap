@@ -44,6 +44,7 @@
   # create user
   - import_tasks: user/architect.yml
   - import_tasks: user/root.yml
+  - import_tasks: user/main_user.yml
   # system setup
   - import_tasks: system-setup/ansible_setup.yml
   - import_tasks: system-setup/clock.yml
@@ -52,4 +53,3 @@
   - import_tasks: system-setup/logging.yml
   - import_tasks: system-setup/ssh.yml
 
-  #- import_tasks: user/main_user.yml
