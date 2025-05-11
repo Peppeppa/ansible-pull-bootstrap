@@ -60,6 +60,12 @@
   community.general.locale_gen:
     name: de_DE.UTF-8
     state: present
+  when: ansible_os_family != "Suse"
+
+- name: system setup | locale | set system locale
+  tags: locale,system-setup
+  command: localectl set-locale LANG=de_DE.UTF-8
+  when: ansible_os_family == "Suse"
 
 - name: system setup | locale | add de_DE
   tags: locale,system-setup
