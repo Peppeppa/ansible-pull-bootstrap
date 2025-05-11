@@ -1,0 +1,4 @@
+---
+- block:
+  # software
+  - import_tasks: dotfiles/dotfiles_main.yml
