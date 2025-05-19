@@ -17,7 +17,6 @@ function set_vault_password {
   chmod 600 "$VAULT_PASS_FILE"
 
   echo "Passwort wurde in $VAULT_PASS_FILE gespeichert."
-
 }
 
 if [[ "$1" == "--pass" ]]; then
