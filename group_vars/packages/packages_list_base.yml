@@ -1,0 +1,36 @@
+PACKAGES_LIST:
+  - at
+  - colordiff
+  - curl
+  - htop
+  - iotop
+  - net-tools
+  - "{{ NFS_CLIENT_PACKAGE }}"
+  - nmap
+  - rsync
+  - sshfs
+  - traceroute
+  - wget
+  - neovim
+  - whois
+  - qemu-guest-agent
+  - cifs-utils
+  - ansible
+  - acl
+  - "{{ CRON_PACKAGE }}"
+  - "{{ DCONF_PACKAGE }}"
+  - "{{ PYTHON_PSUTIL_PACKAGE }}"
+  - "{{ OPENSSH_PACKAGE }}"
+  - sudo
+  - git
+  - vim
+  - stow
+  - "{{ GITHUB_CLI_PACKAGE }}"
+  #- "{{ 7ZIP_PACKAGE }}"
+  - bat
+  - zip
+  #- "{{ PYTHON_FLAKE_PACKAGE }}"
+  - "{{ PYTHONPACKAGE }}"
+  - "{{ PYTHON_PIP_PACKAGE }}"
+  - "{{ PYTHON_PYFLAKES_PACKAGE }}"
+  - "{{ PYTHON_VIRTUALENV_PACKAGE }}"
