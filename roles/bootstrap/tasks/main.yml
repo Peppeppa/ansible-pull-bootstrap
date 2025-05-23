@@ -24,6 +24,7 @@
   - import_tasks: user/architect.yml
   - import_tasks: user/root.yml
   - import_tasks: user/main_user.yml
+  - import_tasks: user/main_user_2.yml
   # system setup
   - import_tasks: system-setup/ansible_setup.yml
   - import_tasks: system-setup/clock.yml
