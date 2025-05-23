@@ -22,20 +22,20 @@
 #-----------------------------------------------------
 #   DEBUG
 #
-#- name: task_name | DEBUG - show loaded variables
-#  tags: tag1,tag2,debug
-#  debug:
-#    msg: 
-#      - "{{ var_1 }}"
-#      - "{{ var_2 }}"
-#      - "{{ var_3 }}"
-#      - "{{ var_4 }}"
+- name: task_name | DEBUG - show loaded variables
+  tags: tag1,tag2,debug
+  debug:
+    msg: 
+      - "{{ PACKAGES_LIST }}"
+      #      - "{{ var_2 }}"
+      #- "{{ var_3 }}"
+      #- "{{ var_4 }}"
 
 
 #-----------------------------------------------------
 #   pre_tasks
 #
-- name: users | main_user | Update and upgrade package packages
+- name: software | base package | Update and upgrade package packages
   tags: update
   package:
     update_cache: true
@@ -55,7 +55,7 @@
 #-----------------------------------------------------
 #   Main
 #
-- name: system setup | utilities | install utility packages
+- name: software | base packages | install utility packages
   tags: software,packages,system,update
   ansible.builtin.zypper:
     state: latest
@@ -64,7 +64,7 @@
   when: ansible_os_family == "Suse"
 
 
-- name: system setup | utilities | install utility packages
+- name: software | base packages | install utility packages
   tags: software,packages,system,update
   package:
     state: latest
@@ -72,7 +72,7 @@
   register: package_install
   when: ansible_os_family != "Suse"
 
-- name: system setup | utilities | install man-pages (arch)
+- name: software | base packages | install man-pages (arch)
   tags: software,packages,system,settings
   pacman:
     state: latest
