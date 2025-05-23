@@ -48,24 +48,36 @@
 #   Main
 #
 
-- name: users | "{{ MAIN_USER }}"| ensure home is present
-  tags: users, main_user, bootstrap
-  ansible.builtin.file:
-    path: "/home/{{ MAIN_USER }}"
-    state: directory
-    owner: "{{ MAIN_USER }}"
-    group: "{{ MAIN_USER }}"
-    mode: '0755'
+#- name: users | "{{ MAIN_USER }}"| ensure home is present
+  #tags: users, main_user, bootstrap
+  #ansible.builtin.file:
+  #  path: "/home/{{ MAIN_USER }}"
+  #  state: directory
+  #  owner: "{{ MAIN_USER }}"
+  #  group: "{{ MAIN_USER }}"
+  #  mode: '0755'
 
-- name: users | "{{ MAIN_USER }}"| user
+- name: users | "{{ MAIN_USER }}" | user
   tags: users,main_user,bootstrap
-  user:
+  ansible.builtin.user:
     name: "{{ MAIN_USER }}"
     generate_ssh_key: true
     ssh_key_type: ed25519
     ssh_key_comment: "{{ MAIN_USER }}"
     password: "{{ MAIN_USER_PASSWD_HASH }}"
     state: present
+    create_home: true
+    shell: /bin/bash
+
+#- name: users | "{{ MAIN_USER }}"| user
+  #tags: users,main_user,bootstrap
+  #user:
+    #  name: "{{ MAIN_USER }}"
+    #generate_ssh_key: true
+    #ssh_key_type: ed25519
+    #ssh_key_comment: "{{ MAIN_USER }}"
+    #password: "{{ MAIN_USER_PASSWD_HASH }}"
+    #state: present
 
 #- name: users | "{{ MAIN_USER }}"| check SSH-key, create it if needed
   #  tags: users, main_user, bootstrap
