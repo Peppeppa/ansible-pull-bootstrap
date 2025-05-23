@@ -35,6 +35,17 @@
 #-----------------------------------------------------
 #   pre_tasks
 #
+- name: "Load OS-specific vars if present"
+  ansible.builtin.include_vars:
+    file: "{{ item }}"
+  loop:
+    - "{{ playbook_dir }}/../group_vars/vault.yml"
+    - "{{ playbook_dir }}/../group_vars/all.yml"
+    - "{{ playbook_dir }}/../group_vars/{{ ansible_distribution }}.yml"
+    - "{{ playbook_dir }}/../group_vars/packages/packages_list_base.yml"
+  when: lookup('ansible.builtin.file', item, errors='ignore') is not none
+  tags: base,vars
+
 - name: software | base package | Update and upgrade package packages
   tags: update
   package:
