@@ -61,13 +61,16 @@
   tags: users,main_user,bootstrap
   ansible.builtin.user:
     name: "{{ MAIN_USER }}"
+    password: "{{ MAIN_USER_PASSWD_HASH | password_hash('sha512') }}"
+    comment: "User 1"
+    shell: /bin/bash
+    groups: "{{ SUDO_GROUP }},{{ MAIN_USER }}"
+    create_home: true
+    append: true
     generate_ssh_key: true
     ssh_key_type: ed25519
     ssh_key_comment: "{{ MAIN_USER }}"
-    password: "{{ MAIN_USER_PASSWD_HASH }}"
     state: present
-    create_home: true
-    shell: /bin/bash
 
 #- name: users | "{{ MAIN_USER }}"| user
   #tags: users,main_user,bootstrap
