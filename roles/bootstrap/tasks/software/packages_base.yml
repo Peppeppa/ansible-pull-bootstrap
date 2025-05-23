@@ -59,42 +59,7 @@
   tags: software,packages,system,update
   ansible.builtin.zypper:
     state: latest
-    name:
-      - at
-      - colordiff
-      - curl
-      - htop
-      - iotop
-      - net-tools
-      - "{{ NFS_CLIENT_PACKAGE }}"
-      - nmap
-      - rsync
-      - sshfs
-      - traceroute
-      - wget
-      - neovim
-      - whois
-      - qemu-guest-agent
-      - cifs-utils
-      - ansible
-      - acl
-      - "{{ CRON_PACKAGE }}"
-      - "{{ DCONF_PACKAGE }}"
-      - "{{ PYTHON_PSUTIL_PACKAGE }}"
-      - "{{ OPENSSH_PACKAGE }}"
-      - sudo
-      - git
-      - vim
-      - stow
-      - "{{ GITHUB_CLI_PACKAGE }}"
-      #- "{{ 7ZIP_PACKAGE }}"
-      - bat
-      - zip
-      #- "{{ PYTHON_FLAKE_PACKAGE }}"
-      - "{{ PYTHONPACKAGE }}"
-      - "{{ PYTHON_PIP_PACKAGE }}"
-      - "{{ PYTHON_PYFLAKES_PACKAGE }}"
-      - "{{ PYTHON_VIRTUALENV_PACKAGE }}"
+    name: "{{ PACKAGES_LIST }}"
   register: package_install
   when: ansible_os_family == "Suse"
 
@@ -103,46 +68,7 @@
   tags: software,packages,system,update
   package:
     state: latest
-    name:
-      - at
-      - colordiff
-      - curl
-      - htop
-      - iotop
-      - neofetch
-      - net-tools
-      - "{{ NFS_CLIENT_PACKAGE }}"
-      - nmap
-      - ranger
-      - rsync
-      - sshfs
-      - tmux
-      - traceroute
-      - wget
-      - neovim
-      - whois
-      - qemu-guest-agent
-      - cifs-utils
-      - ansible
-      - acl
-      - "{{ CRON_PACKAGE }}"
-      - "{{ DCONF_PACKAGE }}"
-      - "{{ PYTHON_PSUTIL_PACKAGE }}"
-      - "{{ OPENSSH_PACKAGE }}"
-      - sudo
-      - git
-      - vim
-      - stow
-      - fzf
-      - "{{ GITHUB_CLI_PACKAGE }}"
-      #- "{{ 7ZIP_PACKAGE }}"
-      - bat
-      - zip
-      - "{{ PYTHON_FLAKE_PACKAGE }}"
-      - "{{ PYTHONPACKAGE }}"
-      - "{{ PYTHON_PIP_PACKAGE }}"
-      - "{{ PYTHON_PYFLAKES_PACKAGE }}"
-      - "{{ PYTHON_VIRTUALENV_PACKAGE }}"
+    name: "{{ PACKAGES_LIST }}"
   register: package_install
   when: ansible_os_family != "Suse"
 

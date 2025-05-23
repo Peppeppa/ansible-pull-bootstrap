@@ -5,9 +5,10 @@
   become: true 
   
   vars_files:
-    -../group_vars/all.yml
+    - ../group_vars/vault.yml
+    - ../group_vars/all.yml
+    - ../group_vars/distro/{{ ansible_distribution }}.yml
+    - ../group_vars/packages/packages_list_base.yml
 
-  vars: 
-  ansible_user: "{{ lookup('env', 'USER') }}"
   roles:
     - bootstrap
