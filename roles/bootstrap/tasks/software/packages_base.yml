@@ -22,11 +22,11 @@
 #-----------------------------------------------------
 #   DEBUG
 #
-- name: task_name | DEBUG - show loaded variables
-  tags: tag1,tag2,debug
-  debug:
-    msg: 
-      - "{{ PACKAGES_LIST }}"
+#- name: task_name | DEBUG - show loaded variables
+  #  tags: tag1,tag2,debug
+  #  debug:
+    #    msg: 
+      #      - "{{ PACKAGES_LIST }}"
       #      - "{{ var_2 }}"
       #- "{{ var_3 }}"
       #- "{{ var_4 }}"
