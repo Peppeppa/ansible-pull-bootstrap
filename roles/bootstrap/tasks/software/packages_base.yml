@@ -41,7 +41,7 @@
 #  loop:
 #    - "{{ playbook_dir }}/group_vars/vault.yml"
 #    - "{{ playbook_dir }}/group_vars/all.yml"
-#    - "{{ playbook_dir }}/group_vars/{{ ansible_distribution }}.yml"
+#    - "{{ playbook_dir }}/group_vars/distro/{{ ansible_distribution }}.yml"
 #    - "{{ playbook_dir }}/group_vars/packages/packages_list_base.yml"
 #  when: lookup('ansible.builtin.file', item, errors='ignore') is not none
 #  tags: base,vars
