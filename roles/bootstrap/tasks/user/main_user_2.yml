@@ -57,6 +57,12 @@
   #  group: "{{ MAIN_USER_2 }}"
   #  mode: '0755'
 
+- name: users | "{{ MAIN_USER_2 }}" | Create group
+  tags: users,main_user,bootstrap
+  group:
+    name: "{{ MAIN_USER_2 }}"
+    state: present
+    
 - name: users | "{{ MAIN_USER_2}}" | user
   tags: users,main_user,bootstrap
   ansible.builtin.user:
