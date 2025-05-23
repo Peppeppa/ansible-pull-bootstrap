@@ -14,9 +14,9 @@
 #- name: task_name | load variables 
 #  tags: tag1,tag2
 #  set_fact:
-#    MAIN_USER: "{{ ansible_user }}"
+#    MAIN_USER_2: "{{ ansible_user }}"
 #    SUDO_GROUP: 
-#    MAIN_USER_PASSWD: "{{ beispiel_variable }}"
+#    MAIN_USER_2_PASSWD: "{{ beispiel_variable }}"
 #    var_4: 
 
 #-----------------------------------------------------
@@ -26,16 +26,16 @@
 #  tags: tag1,tag2,debug
 #  debug:
 #    msg: 
-#      - "{{ MAIN_USER }}"
+#      - "{{ MAIN_USER_2 }}"
 #      - "{{ SUDO_GROUP }}"
-#      - "{{ MAIN_USER_PASSWD }}"
+#      - "{{ MAIN_USER_2_PASSWD }}"
 #      - "{{ var_4 }}"
 
 
 #-----------------------------------------------------
 #   pre_tasks
 #
-- name: users | "{{ MAIN_USER }}"| Ensure needed packages are installed
+- name: users | "{{ MAIN_USER_2}}" | Ensure needed packages are installed
   tags: packages,users,main_user,bootstrap
   package:
     name: 
@@ -48,66 +48,65 @@
 #   Main
 #
 
-- name: users | "{{ MAIN_USER }}"| ensure home is present
+- name: users | "{{ MAIN_USER_2}}" | ensure home is present
   tags: users, main_user, bootstrap
   ansible.builtin.file:
-    path: "/home/{{ MAIN_USER }}"
+    path: "/home/{{ MAIN_USER_2 }}"
     state: directory
-    owner: "{{ MAIN_USER }}"
-    group: "{{ MAIN_USER }}"
+    owner: "{{ MAIN_USER_2 }}"
+    group: "{{ MAIN_USER_2 }}"
     mode: '0755'
 
-- name: users | "{{ MAIN_USER }}"| user
+- name: users | "{{ MAIN_USER_2}}" | user
   tags: users,main_user,bootstrap
   user:
-    name: "{{ MAIN_USER }}"
+    name: "{{ MAIN_USER_2 }}"
     generate_ssh_key: true
     ssh_key_type: ed25519
-    ssh_key_comment: "{{ MAIN_USER }}"
-    password: "{{ MAIN_USER_PASSWD_HASH }}"
+    ssh_key_comment: "{{ MAIN_USER_2 }}"
+    password: "{{ MAIN_USER_2_PASSWD_HASH }}"
     state: present
 
-#- name: users | "{{ MAIN_USER }}"| check SSH-key, create it if needed
+#- name: users | "{{ MAIN_USER_2}}" | check SSH-key, create it if needed
   #  tags: users, main_user, bootstrap
   #ansible.builtin.command:
-    #  cmd: "ssh-keygen -t ed25519 -C '{{ MAIN_USER }}' -f /home/{{ MAIN_USER }}/.ssh/id_ed25519 -N ''"
-    #creates: "/home/{{ MAIN_USER }}/.ssh/id_ed25519"
+    #  cmd: "ssh-keygen -t ed25519 -C '{{ MAIN_USER_2 }}' -f /home/{{ MAIN_USER }}/.ssh/id_ed25519 -N ''"
+    #creates: "/home/{{ MAIN_USER_2 }}/.ssh/id_ed25519"
 
-- name: users | "{{ MAIN_USER }}"| permissions for .ssh
+- name: users | "{{ MAIN_USER_2}}" | permissions for .ssh
   tags: users, main_user, bootstrap
   ansible.builtin.file:
-    path: "/home/{{ MAIN_USER }}/.ssh"
+    path: "/home/{{ MAIN_USER_2 }}/.ssh"
     state: directory
-    owner: "{{ MAIN_USER }}"
-    group: "{{ MAIN_USER }}"
+    owner: "{{ MAIN_USER_2 }}"
+    group: "{{ MAIN_USER_2 }}"
     mode: '0700'
 
-- name: users | "{{ MAIN_USER }}"| permissions for sshkey
+- name: users | "{{ MAIN_USER_2}}" | permissions for sshkey
   tags: users, main_user, bootstrap
   ansible.builtin.file:
-    path: "/home/{{ MAIN_USER }}/.ssh/id_ed25519"
+    path: "/home/{{ MAIN_USER_2 }}/.ssh/id_ed25519"
     state: file
-    owner: "{{ MAIN_USER }}"
-    group: "{{ MAIN_USER }}"
+    owner: "{{ MAIN_USER_2 }}"
+    group: "{{ MAIN_USER_2 }}"
     mode: '0600'
 
-- name: users | "{{ MAIN_USER }}"| "sudoers.d"
+- name: users | "{{ MAIN_USER_2}}" | "sudoers.d"
   tags: users,main_user,bootstrap
   ansible.builtin.lineinfile:
-    path: /etc/sudoers.d/{{ MAIN_USER }}
-    line: "{{ MAIN_USER }} ALL=(ALL) NOPASSWD: ALL"
+    path: /etc/sudoers.d/{{ MAIN_USER_2 }}
+    line: "{{ MAIN_USER_2 }} ALL=(ALL) NOPASSWD: ALL"
     create: true
     mode: '0440'
 
-- name: users | "{{ MAIN_USER }}" | write pub ssh to authorized keys
+- name: users | "{{ MAIN_USER_2 }}" | write pub ssh to authorized keys
   ansible.builtin.authorized_key:
-    user: "{{ MAIN_USER }}"
+    user: "{{ MAIN_USER_2 }}"
     state: present
     key: "{{ item }}"
-    path: "/home/{{ MAIN_USER }}/.ssh/authorized_keys"
+    path: "/home/{{ MAIN_USER_2 }}/.ssh/authorized_keys"
   loop:
-    - "{{ PUBSSH_T440P }}"
-    - "{{ PUBSSH_X1CARB }}"
+    - "{{ PUBSSH_OBIVAN }}"
 
 #-----------------------------------------------------
 #   post_tasks
